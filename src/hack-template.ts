@@ -1,7 +1,8 @@
-/** @param {NS} ns */
-export async function main(ns) {
+import { NS } from '@ns';
 
-    const target = ns.args.length > 0 ? ns.args[0] : "joesguns";
+export async function main(ns: NS) : Promise<void> {
+
+    const target = ns.args.length > 0 ? ns.args[0] as string : "joesguns";
 
     //ns.tprint(`hacking ${target}\n`);
     // Defines how much money a server should have before we hack it

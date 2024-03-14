@@ -1,13 +1,13 @@
+import { NS } from '@ns'
 
-/** @param {NS} ns */
-export async function main(ns) {
+export async function main(ns: NS) : Promise<void> {
 
     let ram = 1048;
     let cost = ns.getPurchasedServerCost(ram);
 
     let hackRam = ns.getScriptRam("hack-template.js");
     ns.tprint(`${ram} GB servers cost ${cost}`)
-    let buyServers = function (ns)
+    let buyServers = function ()
     {
       // Iterator we'll use for our loop
       let i = ns.scan().filter(s => s.startsWith('pserv-')).length;
@@ -48,7 +48,7 @@ export async function main(ns) {
           } else if (ns.hacknet.upgradeCore(node)){
             //ns.tprint(`Upgraded hacknet ram for ${nodeStats.name} (${nodeStats.cores} -> ${ns.hacknet.getNodeStats(node).cores})`);
           } else {
-            buyServers(ns);
+            buyServers();
           }
         }
       }
