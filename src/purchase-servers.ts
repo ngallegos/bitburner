@@ -2,11 +2,11 @@ import { NS } from '@ns'
 
 export async function main(ns: NS) : Promise<void> {
 
-    let ram = 1048;
+    let ram = 2 ** 20; // 1048576 GB max
     let cost = ns.getPurchasedServerCost(ram);
 
     let hackRam = ns.getScriptRam("hack-template.js");
-    ns.tprint(`${ram} GB servers cost ${cost}`)
+    ns.tprint(`${ram} GB servers cost ${cost / 1000000000} billion`)
     let buyServers = function ()
     {
       // Iterator we'll use for our loop
